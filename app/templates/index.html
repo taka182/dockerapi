@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Posts</title>
+  <link rel="stylesheet" href="/static/uikit/css/uikit.min.css" />
+  <script src="/static/uikit/js/uikit.min.js"></script>
+  <script src="/static/uikit/js/uikit-icons.min.js"></script>
+  <script src="/static/static.js"></script>
+</head>
+
+<body>
+  <nav class="uk-navbar-container" uk-sticky="offset" uk-navbar>
+    <div class="uk-navbar-left">
+      <div class="uk-inline">
+        <button class="uk-button uk-button-default" type="button">
+          <span uk-icon="icon: menu" class="uk-margin-small-right"></span>Menu
+        </button>
+        <div uk-dropdown>
+          <ul class="uk-nav uk-dropdown-nav">
+            <li><a href="/create_posts/">Create New Post</a></li>
+          </ul>
+        </div>
+      </div>
+      <span uk-icon="icon: apple"></span><a class="uk-navbar-item uk-logo uk-margin-left" href="/posts/">Posts</a>
+    </div>
+  </nav>
+
+  <div class="uk-container uk-margin-top">
+    {% for post in posts %}
+    <div class="uk-card uk-card-default uk-card-body uk-margin-bottom">
+      <h2 class="uk-card-title" id="title-{{post.post_id}}">
+        {{ post.title }}
+      </h2>
+      <p id="desc-{{post.post_id}}">{{ post.description }}</p>
+      <p class="uk-text-meta">投稿日: {{ post.created_at }}</p>
+      <p class="uk-text-meta">
+        更新日: {{ post.updated_at if post.updated_at is not none else "-" }}
+      </p>
+      <div>
+        <button class="uk-button uk-button-danger uk-margin-small-right" onclick="deletePost('{{post.post_id}}')">
+          <span uk-icon="icon: trash" class="uk-margin-small-right"></span>DELETE
+        </button>
+        <div class="uk-button-group">
+          <button class="uk-button uk-button-default uk-margin-small-right editButton" post_id="{{post.post_id}}">
+            <span uk-icon="icon: file-edit" class="uk-margin-small-right"></span>EDIT
+          </button>
+          <button class="uk-button uk-button-primary uk-margin-small-right saveButton" style="display: none;"
+            post_id="{{post.post_id}}">
+            <span uk-icon="icon: check" class="uk-margin-small-right"></span>SAVE
+          </button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</body>
+
+</html>

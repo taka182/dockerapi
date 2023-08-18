@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Item</title>
+  <link rel="stylesheet" href="/static/uikit/css/uikit.min.css" />
+  <script src="/static/uikit/js/uikit.min.js"></script>
+  <script src="/static/uikit/js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+  <nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+      <a class="uk-navbar-item uk-logo" href="/posts/">Home</a>
+    </div>
+  </nav>
+
+  <div class="uk-container uk-container-small uk-margin-large-top">
+    <h1 class="uk-heading-line uk-text-center"><span>Create a New Post</span></h1>
+
+    <div class="uk-card uk-card-default uk-card-body uk-width-1-1@m">
+      <form action="/create_posts/" method="post" class="uk-form-stacked uk-margin-large-top">
+
+        <div class="uk-margin">
+          <label for="title" class="uk-form-label">Title:</label>
+          <div class="uk-inline uk-width-1-1">
+            <input class="uk-input" type="text" id="title" name="title" required />
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <label for="description" class="uk-form-label">Description:</label>
+          <div class="uk-inline uk-width-1-1">
+            <textarea class="uk-textarea" rows="5" id="description" name="description" required></textarea>
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <input class="uk-button uk-button-primary uk-button-large" type="submit" value="Create" />
+        </div>
+      </form>
+    </div>
+    <p class="uk-text-center"><a href="/posts/">Back to home</a></p>
+  </div>
+</body>
+
+</html>
