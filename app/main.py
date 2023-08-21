@@ -5,7 +5,7 @@ from fastapi import FastAPI, Depends, Request, Form, Body
 from fastapi.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 import crud, models, schemas
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import RedirectResponse
 
 
 
@@ -25,13 +25,14 @@ def get_db():
         db.close()
 
 # すべてのpost取得
-@fast.get("/posts/", response_model=list[schemas.Post], )
+@fast.get("/posts/")
 def read_posts(request: Request, db: SessionLocal = Depends(get_db)
 ):
     read_posts = crud.get_posts(db)
     return templates.TemplateResponse("index.html", {"request": request, "posts": read_posts})
 
-@fast.get("/create_posts/", response_class=HTMLResponse)
+# 投稿画面フォーム取得
+@fast.get("/create_posts/")
 def create_post_form(request: Request):
     return templates.TemplateResponse("create.html", {"request": request})
 
