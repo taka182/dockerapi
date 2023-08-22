@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/static/uikit/css/uikit.min.css" />
   <script src="/static/uikit/js/uikit.min.js"></script>
   <script src="/static/uikit/js/uikit-icons.min.js"></script>
+  <script src="/static/create-post.js"></script>
 </head>
 
 <body>
@@ -26,19 +27,31 @@
         <div class="uk-margin">
           <label for="title" class="uk-form-label">Title:</label>
           <div class="uk-inline uk-width-1-1">
-            <input class="uk-input" type="text" id="title" name="title" required />
+            <input class="uk-input" type="text" id="title" name="title" />
+
+            <div class="uk-alert-danger" uk-alert id="createAlertTitle" style="display: none;">
+              <a class="uk-alert-close" uk-close></a>
+              <p>タイトルは入力必須項目です!</p>
+            </div>
           </div>
         </div>
 
         <div class="uk-margin">
           <label for="description" class="uk-form-label">Description:</label>
           <div class="uk-inline uk-width-1-1">
-            <textarea class="uk-textarea" rows="5" id="description" name="description" required></textarea>
+            <textarea class="uk-textarea" rows="4" id="description" name="description"></textarea>
+
+            <div class="uk-alert-danger" uk-alert id="createAlertDesc" style="display: none;">
+              <a class="uk-alert-close" uk-close></a>
+              <p>投稿内容は入力必須項目です!</p>
+            </div>
           </div>
         </div>
 
         <div class="uk-margin">
-          <input class="uk-button uk-button-primary uk-button-large" type="submit" value="Create" />
+          <button class="uk-button uk-button-primary createButton">
+            <span uk-icon="icon: check" class="uk-margin-small-right"></span>CREATE
+          </button>
         </div>
       </form>
     </div>
