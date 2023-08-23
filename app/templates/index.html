@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="/static/uikit/css/uikit.min.css" />
   <script src="/static/uikit/js/uikit.min.js"></script>
   <script src="/static/uikit/js/uikit-icons.min.js"></script>
-  <script src="/static/static.js"></script>
+  <script src="/static/post.js"></script>
+  <script src="/static/ui.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,19 @@
       <h2 class="uk-card-title" id="title-{{post.post_id}}">
         {{ post.title }}
       </h2>
+
+      <div class="uk-alert-danger" uk-alert id="editAlertTitle" style="display: none;">
+        <a class="uk-alert-close" uk-close></a>
+        <p>タイトルは入力必須項目です!</p>
+      </div>
+
       <p id="desc-{{post.post_id}}">{{ post.description }}</p>
+
+      <div class="uk-alert-danger" uk-alert id="editAlertDesc" style="display: none;">
+        <a class="uk-alert-close" uk-close></a>
+        <p>投稿内容は入力必須項目です!</p>
+      </div>
+
       <p class="uk-text-meta">投稿日: {{ post.created_at }}</p>
       <p class="uk-text-meta">
         更新日: {{ post.updated_at if post.updated_at is not none else "-" }}
