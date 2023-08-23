@@ -1,2 +1,2 @@
-dockerapi/db/
-dockerapi/app/__pycache__
+db/
+app/__pycache__/
