@@ -1,8 +1,9 @@
 import models, schemas
 from sqlalchemy.orm import Session
 
+# 最後の投稿ID(post_id)から降順で100件の投稿データを取得
 def get_posts(db: Session):
-    return db.query(models.Post).all()
+    return db.query(models.Post).order_by(models.Post.post_id.desc()).limit(100).all()
 
 def create_post(db: Session, post: schemas.PostCreate):
     db_post = models.Post(
